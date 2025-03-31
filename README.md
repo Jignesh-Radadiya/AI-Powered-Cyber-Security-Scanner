@@ -98,8 +98,8 @@
 
 🚀 **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/ai-vuln-scanner.git
-cd ai-vuln-scanner
+git clone https://github.com/Jignesh-Radadiya/AI-Powered-Cyber-Security-Scanner.git
+cd AI-Powered-Cyber-Security-Scanner
 ```
 
 🛠 **Set Up a Virtual Environment** *(Recommended)*
