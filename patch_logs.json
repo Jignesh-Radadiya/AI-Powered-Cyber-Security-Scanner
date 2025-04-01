@@ -1,0 +1,37 @@
+{
+    "timestamp": "2025-03-17 14:35:08",
+    "patch_results": {
+        "bash": "\u274c Failed: 'NoneType' object has no attribute 'poll'"
+    },
+    "cve_details": {
+        "Error": "Failed to fetch CVEs from NVD."
+    }
+}
+{
+    "timestamp": "2025-03-21 02:15:56",
+    "patch_results": {
+        "7zip": "\u274c Failed: 'NoneType' object has no attribute 'poll'",
+        "binutils-common": "\u274c Failed: 'NoneType' object has no attribute 'poll'"
+    },
+    "cve_details": {
+        "Error": "Failed to fetch CVEs from NVD."
+    }
+}
+{
+    "timestamp": "2025-03-21 02:17:27",
+    "patch_results": {
+        "blt": "\u274c Failed: 'NoneType' object has no attribute 'poll'"
+    },
+    "cve_details": {
+        "Error": "Failed to fetch CVEs from NVD."
+    }
+}
+{
+    "timestamp": "2025-03-21 02:25:26",
+    "patch_results": {
+        "colord": "\u274c Failed: 'NoneType' object has no attribute 'poll'"
+    },
+    "cve_details": {
+        "Error": "Failed to fetch CVEs from NVD."
+    }
+}

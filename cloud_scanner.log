@@ -1,0 +1,96 @@
+2025-02-27 10:25:13,959 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:30:34,018 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:32:38,501 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:35:59,172 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:38:14,455 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:43:50,812 - INFO - HTML & PDF report generated successfully.
+2025-02-27 10:54:24,798 - INFO - HTML & PDF report generated successfully.
+2025-02-27 11:06:52,791 - INFO - HTML & PDF report generated successfully.
+2025-02-27 11:22:51,496 - INFO - HTML & PDF report generated successfully.
+2025-02-27 11:45:51,358 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:02:10,553 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:16:00,788 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:31:11,709 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:33:44,915 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:37:13,126 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:41:19,729 - ERROR - Error fetching CVEs: HTTPSConnectionPool(host='cve.circl.lu', port=443): Max retries exceeded with url: /api/last (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f5d5ac05640>: Failed to resolve 'cve.circl.lu' ([Errno -3] Temporary failure in name resolution)"))
+2025-02-27 12:42:51,111 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:46:14,298 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:47:58,220 - ERROR - Error fetching CVEs: HTTPSConnectionPool(host='cve.circl.lu', port=443): Max retries exceeded with url: /api/last (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f9f737192e0>: Failed to resolve 'cve.circl.lu' ([Errno -3] Temporary failure in name resolution)"))
+2025-02-27 12:49:07,276 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:51:54,816 - ERROR - Error fetching CVEs: HTTPSConnectionPool(host='cve.circl.lu', port=443): Max retries exceeded with url: /api/last (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f913f9ac5f0>: Failed to resolve 'cve.circl.lu' ([Errno -3] Temporary failure in name resolution)"))
+2025-02-27 12:54:27,239 - INFO - HTML & PDF report generated successfully.
+2025-02-27 12:55:34,383 - ERROR - Error fetching CVEs: HTTPSConnectionPool(host='cve.circl.lu', port=443): Max retries exceeded with url: /api/last (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f171f924dd0>: Failed to resolve 'cve.circl.lu' ([Errno -3] Temporary failure in name resolution)"))
+2025-02-27 12:56:14,341 - INFO - HTML & PDF report generated successfully.
+2025-02-27 13:04:48,305 - ERROR - Error fetching CVEs: HTTPSConnectionPool(host='services.nvd.nist.gov', port=443): Max retries exceeded with url: /rest/json/cves/1.0 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fb57eba4cb0>: Failed to resolve 'services.nvd.nist.gov' ([Errno -3] Temporary failure in name resolution)"))
+2025-02-27 13:05:50,691 - INFO - HTML & PDF report generated successfully.
+2025-03-17 07:09:09,497 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f75e6d96990>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-17 07:09:10,502 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f75e6d96cf0>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-17 07:25:56,220 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f93cd82bbf0>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-17 07:25:57,226 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f93cb499a60>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-17 08:10:01,793 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0b527a5580>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-17 08:10:02,801 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0b50f96000>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-17 09:02:19,912 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f6f62594f80>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-17 09:02:20,942 - WARNING - HTTPSConnectionPool(host='127.0.0.1', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f6f625961b0>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-17 09:47:39,222 - WARNING - HTTPConnectionPool(host='127.0.0.1', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f379d4d3bf0>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-17 09:47:40,242 - WARNING - HTTPConnectionPool(host='127.0.0.1', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f379d296600>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-23 09:05:46,509 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-03-23 09:19:07,001 - ERROR - Error retrieving AI advice: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-03-23 09:21:18,564 - ERROR - Error retrieving AI advice: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+2025-03-23 09:33:46,725 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-03-23 09:33:46,739 - ERROR - Error retrieving AI advice: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-03-23 09:44:33,974 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-23 09:44:33,977 - INFO - Retrying request to /chat/completions in 0.493647 seconds
+2025-03-23 09:44:34,888 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-23 09:44:34,890 - INFO - Retrying request to /chat/completions in 0.874853 seconds
+2025-03-23 09:44:36,413 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-23 09:44:36,416 - ERROR - Error retrieving AI advice: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-03-24 07:55:40,929 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-24 07:55:40,935 - INFO - Retrying request to /chat/completions in 0.421358 seconds
+2025-03-24 07:55:41,941 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-24 07:55:41,942 - INFO - Retrying request to /chat/completions in 0.801608 seconds
+2025-03-24 07:55:43,168 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-24 07:55:43,172 - ERROR - Error retrieving AI advice: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-03-25 04:31:15,199 - INFO - HTML & PDF report generated successfully.
+2025-03-25 04:34:11,557 - INFO - HTML & PDF report generated successfully.
+2025-03-25 06:29:35,926 - INFO - HTML & PDF report generated successfully.
+2025-03-25 07:27:07,826 - WARNING - HTTPConnectionPool(host='0.0.0.0', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f7d0771ef30>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-25 07:27:08,832 - WARNING - HTTPConnectionPool(host='0.0.0.0', port=55552): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f7d05e5c320>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...
+2025-03-25 09:03:25,003 - INFO - HTML & PDF report generated successfully.
+2025-03-25 09:18:58,618 - INFO - HTML & PDF report generated successfully.
+2025-03-25 10:05:29,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 10:05:29,055 - INFO - Retrying request to /chat/completions in 0.414230 seconds
+2025-03-25 10:05:30,450 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 10:05:30,452 - INFO - Retrying request to /chat/completions in 0.820347 seconds
+2025-03-25 10:05:31,685 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 10:05:31,689 - ERROR - Error retrieving AI advice: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-03-25 10:12:50,781 - INFO - HTML & PDF report generated successfully.
+2025-03-25 11:13:41,011 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 11:13:41,037 - INFO - Retrying request to /chat/completions in 0.433829 seconds
+2025-03-25 11:13:41,857 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 11:13:41,859 - INFO - Retrying request to /chat/completions in 0.840371 seconds
+2025-03-25 11:13:43,095 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-03-25 11:13:43,325 - ERROR - Error retrieving AI advice: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-03-29 16:10:24,893 - INFO - HTML & PDF report generated successfully.
+\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\002025-03-29 16:38:46,223 - WARNING - HTTPConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f9d3d3c9280>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-30 18:22:51,623 - INFO - HTML & PDF report generated successfully in 'cloud_output' folder.
+2025-03-30 18:46:18,356 - WARNING - HTTPConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f97eebf5430>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 1 seconds...
+2025-03-30 18:46:19,364 - WARNING - HTTPConnectionPool(host='127.0.0.1', port=55553): Max retries exceeded with url: /api/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f97f57ede80>: Failed to establish a new connection: [Errno 111] Connection refused')), retrying in 2 seconds...

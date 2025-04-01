@@ -1,0 +1,25 @@
+{
+    "query": "Hii",
+    "response": "\u26a0 **Error retrieving advice:** \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n",
+    "timestamp": "Sun Mar 23 08:50:02 2025"
+}
+{
+    "query": "hii",
+    "response": "\u26a0 **Error retrieving advice:** \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n",
+    "timestamp": "Sun Mar 23 08:52:48 2025"
+}
+{
+    "query": "hii",
+    "response": "\u26a0 **Error retrieving advice:** The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable",
+    "timestamp": "Sun Mar 23 08:57:45 2025"
+}
+{
+    "query": "Hii",
+    "response": "\u26a0 **Error retrieving advice:** The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable",
+    "timestamp": "Sun Mar 23 08:58:42 2025"
+}
+{
+    "query": "hii",
+    "response": "\u26a0 **Error retrieving advice:** Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}",
+    "timestamp": "Sun Mar 23 09:05:46 2025"
+}
