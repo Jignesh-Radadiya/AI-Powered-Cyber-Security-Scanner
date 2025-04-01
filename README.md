@@ -93,6 +93,13 @@
 ✅ **pip** package manager  
 ✅ **Virtual Environment (Recommended)**  
 ✅ **Docker** (For Wazuh, MISP, or Elastic SIEM integration)  
+✅ **Nmap, SQLMap, Metasploit** installed  
+✅ **RPC Metasploit Configuration:**  
+   - Username: `msf`  
+   - Password: `msf`  
+   - Server: `127.0.0.1`  
+   - Port: `55553`  
+
 
 ### 🛠 Installation Steps
 
