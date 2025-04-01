@@ -101,7 +101,9 @@ class LiveDashboard:
         log_counts = Counter()
         
         log_files = ["/var/log/syslog", "/var/log/auth.log"]
-      #  log_files = ["/home/kali/Desktop/test_logs.log"]  # Using test log file
+        
+        #if you want to test dashboard than comment out and change path your following path
+      #  log_files = ["home/kali/Desktop/ai_scanner_github/dashboard_test/test_logs.log"]  # Using test log file  
 
         try:
             for log_file in log_files:
@@ -148,7 +150,9 @@ class LiveDashboard:
         """Read security logs in real time."""
         try:
             # Linux: Use journalctl or tail -f
-            #process = subprocess.Popen(["tail", "-f", "/home/kali/Desktop/test_logs.log"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            
+            #if you want to test dashboard than comment out the below line only and change path your following path
+            #process = subprocess.Popen(["tail", "-f", "home/kali/Desktop/ai_scanner_github/dashboard_test/test_logs.log"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             
             process = subprocess.Popen(["tail", "-f", "/var/log/syslog", "/var/log/auth.log"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             

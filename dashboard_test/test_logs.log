@@ -1,0 +1,12 @@
+2025-03-25 12:00:01 - Failed password for invalid user admin from 192.168.1.100 port 22 ssh2
+2025-03-25 12:00:05 - Unauthorized access attempt detected from 10.0.0.200
+2025-03-25 12:00:10 - Firewall alert: Blocked suspicious connection from 172.16.0.50
+2025-03-25 12:00:15 - Intrusion detected: Possible brute-force attack from 203.0.113.45
+2025-03-25 12:00:20 - User login successful: User 'john_doe' from 192.168.1.50
+2025-03-25 12:00:25 - Failed password for root from 10.10.10.10 port 22 ssh2
+2025-03-25 12:00:30 - Firewall alert: Blocked incoming traffic on port 3389
+2025-03-25 12:00:35 - Intrusion detected: SQL injection attempt on web server
+2025-03-25 12:00:40 - Unauthorized access: User 'guest' attempted login with incorrect password
+2025-03-25 12:00:45 - No security threats detected in the last interval.
+2025-03-25 12:00:50 - Firewall alert: Excessive connections from 198.51.100.25
+
