@@ -1,4 +1,4 @@
-# 🔥 AI-Powered Advanced Vulnerability Scanner
+# 🔥 AI-Powered Advanced Cybersecurity Scanner
 
 🚀 **A Next-Gen Cybersecurity Solution** – AI-powered **vulnerability detection, real-time attack simulation, deep packet inspection, and auto-patching** for **network, web, cloud, and container security**. 
 
