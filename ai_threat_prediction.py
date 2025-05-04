@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.utils import shuffle
 
 class AIThreatPredictionGUI(tk.Frame):
     """GUI for AI Threat Prediction inside the main application."""
@@ -190,7 +191,10 @@ class AIThreatPredictionGUI(tk.Frame):
                 })
 
                 y_manual = np.array([0] * 200 + [1] * 200 + [2] * 200)  # 200 Low, 200 Medium, 200 High
-                np.random.shuffle(y_manual)  # Shuffle labels
+             #   np.random.shuffle(y_manual)  # Shuffle labels
+                 # Shuffle features and labels together
+                X_manual, y_manual = shuffle(X_manual, y_manual, random_state=42)
+
                 
                
 

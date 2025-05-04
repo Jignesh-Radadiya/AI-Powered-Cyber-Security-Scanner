@@ -78,20 +78,23 @@ def save_report(scan_data_storage):
         return
 
     file_extension = os.path.splitext(file_path)[1].lower()
-    print(f"Saving File: {file_path}, Detected Extension: {file_extension}")  # Debugging
+   # print(f"Saving File: {file_path}, Detected Extension: {file_extension}")  # Debugging
 
     try:
         if file_extension == ".csv":
-            with open(file_path, "w", newline="") as csvfile:
+            with open(file_path, "w", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
-                writer.writerow(["Target", "Port", "Service", "OS", "Vulnerabilities"])
+                writer.writerow(["Target", "Port", "Service", "OS", "Vulnerabilities", "Scan Type", "Details"])
                 for entry in scan_data_storage:
                     writer.writerow([
                         entry.get("Target", ""), 
                         entry.get("Port", ""), 
                         entry.get("Service", ""), 
                         entry.get("OS", ""), 
-                        entry.get("Vulnerabilities", "")
+                        entry.get("Vulnerabilities", ""),
+                        entry.get("Scan Type", ""), 
+                        entry.get("Details", "")  # Ensures only relevant data is saved
+                       # entry.get("Full Output", "").replace("\n", " | ")  # Ensure CSV compatibility
                     ])
             messagebox.showinfo("Success", f"CSV report saved: {file_path}")
 
@@ -108,6 +111,10 @@ def save_report(scan_data_storage):
                     txtfile.write(f"Service: {entry.get('Service', '')}\n")
                     txtfile.write(f"OS: {entry.get('OS', '')}\n")
                     txtfile.write(f"Vulnerabilities: {entry.get('Vulnerabilities', '')}\n")
+                    txtfile.write(f"Scan Type: {entry.get('Scan Type', '')}\n")
+                    txtfile.write(f"Details: {entry.get('Details', '')}\n")
+                  #  txtfile.write("Full Output:\n")
+                  #  txtfile.write(entry.get("Full Output", "") + "\n")
                     txtfile.write("-" * 60 + "\n")
             messagebox.showinfo("Success", f"TXT report saved: {file_path}")
 
@@ -136,13 +143,20 @@ def sql_injection_test(target_url, output_text, scan_data_storage, progress_bar)
         process = subprocess.Popen(sqlmap_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
         sql_vulnerabilities = []
+       # scan_output = []
+        vulnerabilities = []
         update_progress(progress_bar, 30)
+        
+        
+
 
         for line in process.stdout:
+          #  scan_output.append(line.strip())  # Store full output
             output_text.insert(tk.END, line, "green")
             output_text.yview(tk.END)
             if "possible SQL injection" in line or "database" in line:
-                sql_vulnerabilities.append(line.strip())
+              #  sql_vulnerabilities.append(line.strip())
+                vulnerabilities.append(line.strip())
                 
             update_progress(progress_bar, min(progress_bar["value"] + 5, 90))  # Gradually increase
 
@@ -150,7 +164,13 @@ def sql_injection_test(target_url, output_text, scan_data_storage, progress_bar)
         update_progress(progress_bar, 95)
 
         vuln_details = "\n".join(sql_vulnerabilities) if sql_vulnerabilities else "No vulnerabilities found"
-        scan_data_storage.append({"Target": target_url, "Scan Type": "SQL Injection", "Details": vuln_details})
+        scan_data_storage.append({
+            "Target": target_url,
+            "Scan Type": "SQL Injection",
+            "Details": vuln_details
+        #    "Details": "\n".join(vulnerabilities) if vulnerabilities else "No vulnerabilities found",
+          #  "Full Output": "\n".join(scan_output)  # Store full scan details
+        })
 
         output_text.insert(tk.END, f"✅ SQL Injection Scan Completed.\n", "green")
     except Exception as e:
@@ -171,11 +191,13 @@ def nmap_scan(target_ip, output_text, result_table, table_frame, scan_data_stora
         process = subprocess.Popen(nmap_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
         scan_data = []
+      #  scan_output = []
         os_info = "Unknown"
         open_ports = []
         vulnerabilities = []
 
         for line in process.stdout:
+            scan_data.append(line.strip())  # Store full scan output
             output_text.insert(tk.END, line, "green")
             output_text.yview(tk.END)
             update_progress(progress_bar, min(progress_bar["value"] + 5, 90))
@@ -199,9 +221,16 @@ def nmap_scan(target_ip, output_text, result_table, table_frame, scan_data_stora
         for port, service in open_ports:
             vuln_text = "\n".join(vulnerabilities) if vulnerabilities else "No known vulnerabilities"
             result_table.insert("", "end", values=(target_ip, port, service, os_info, vuln_text))
-            scan_data.append({"Target": target_ip, "Scan Type": "Nmap Scan", "Details": vuln_text})
+            scan_data_storage.append({
+                "Target": target_ip,
+                "Port": port,
+                "Service": service,
+                "OS": os_info,
+                "Vulnerabilities": vuln_text,
+                #"Full Output": "\n".join(scan_output)  # Store full scan details
+            })
 
-        scan_data_storage.extend(scan_data)
+  #      scan_data_storage.extend(scan_data)
         output_text.insert(tk.END, f"✅ Nmap Scan Completed.\n", "green")
     except Exception as e:
         output_text.insert(tk.END, f"❌ Error: {e}\n")

@@ -14,10 +14,15 @@ import time
 import ssl
 import OpenSSL
 from scapy.layers.inet import IP, TCP, UDP
+from scapy.layers.tls.all import TLS, TLSClientHello
 from sklearn.preprocessing import StandardScaler
 from scapy.utils import rdpcap
 from decimal import Decimal  # Import Decimal if necessary for precise handling
 import hashlib
+
+
+
+
 
 
 # Check if MAC address belongs to VMware (OUI prefixes)
@@ -40,6 +45,8 @@ def fingerprint_packet(packet):
     for byte in data:
         xor_hash ^= byte
     return hex(xor_hash)
+    
+
 
 # Calculate entropy of packet payload
 def calculate_entropy(data):
@@ -50,6 +57,15 @@ def calculate_entropy(data):
     probabilities = [count / len(data) for count in counter.values()]
     entropy = -sum(p * np.log2(p) for p in probabilities)
     return entropy
+
+# Extract SNI (Server Name Indication) from TLS Client Hello packets
+def extract_sni(packet):
+    if packet.haslayer(TLSClientHello):
+        for ext in packet[TLSClientHello].ext:
+            if isinstance(ext, scapy.layers.tls.TLSExtServerName):
+                return ext.servernames[0].servername.decode()
+    return None
+
 
 
 class AIAnomalyDetector(tk.Frame):
@@ -235,6 +251,15 @@ class AIAnomalyDetector(tk.Frame):
             tcp_options = packet[scapy.TCP].options
             details.append(f"TCP Layer: Source Port: {tcp_sport}, Destination Port: {tcp_dport}, Sequence: {tcp_seq}, Acknowledgment: {tcp_ack}, Flags: {tcp_flags}, Window Size: {tcp_window_size}, Payload Length: {tcp_payload_len}, Options: {tcp_options}")
             
+         # TLS Handshake Detection (HTTPS SNI Extraction)
+        if packet.haslayer(scapy.TCP) and packet[TCP].dport == 443:
+            sni = extract_sni(packet)
+            if sni:
+                details.append(f"🌍 Website Visited (SNI): {sni}")
+            else:
+                details.append("🔍 No SNI found (Possibly Encrypted or QUIC)")
+    
+            
         # Check for SSL/TLS (Encrypted Traffic) Handshake
         if packet.haslayer(TCP) and packet.haslayer(scapy.Raw):
             if b"SSL" in packet[scapy.Raw].load or b"TLS" in packet[scapy.Raw].load:
@@ -257,6 +282,8 @@ class AIAnomalyDetector(tk.Frame):
                 details.append(f"DNS Query: Domain: {dns_query}, Type: {dns_type}, Response: {dns_response_details}")
             except AttributeError:
                 details.append("DNS Layer: Invalid DNS attributes")
+                
+                
     
         # HTTP-like Layer (Looking in raw payload for HTTP traffic)
         if packet.haslayer(scapy.Raw):
@@ -275,7 +302,8 @@ class AIAnomalyDetector(tk.Frame):
                     elif line.startswith("User-Agent:"):
                         http_user_agent = line.split(":", 1)[1].strip()
                         details.append(f"HTTP User-Agent: {http_user_agent}")
-                        
+         
+        
                         
         # Add fingerprint, hashes, and entropy info
         details.append(f"🔑 Packet Fingerprint: {fingerprint}")

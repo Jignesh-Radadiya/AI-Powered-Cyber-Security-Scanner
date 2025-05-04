@@ -2,7 +2,7 @@
  
 
 
-import openai
+#import openai
 import tkinter as tk
 from tkinter import scrolledtext, Entry, Button, filedialog, messagebox
 import json
@@ -10,17 +10,19 @@ import requests
 import threading
 import os
 import logging
+from huggingface_hub import InferenceClient
 
 # Configure logging
 logging.basicConfig(filename="chatbot_errors.log", level=logging.ERROR, format="%(asctime)s - %(message)s")
 
-# Load API key securely from environment variable
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("⚠ ERROR: OPENAI_API_KEY is not set! Please set it in your environment variables.")
+# Load Hugging Face token (optional but recommended for higher rate limits)
+hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+if not hf_token:
+    print("⚠ WARNING: Hugging Face token not set! You may hit request limits.")
 
-# Initialize OpenAI client
-client = openai.OpenAI(api_key=api_key)
+# Initialize Hugging Face client
+client = InferenceClient(token=hf_token)
+
 
 
 class AdvancedCyberChatbot:
@@ -95,66 +97,110 @@ class AdvancedCyberChatbot:
         self.chat_area.yview(tk.END)
 
     def generate_response(self, query):
-        """Fetch AI-powered security recommendations, real-time CVE threats, and pentesting insights."""
-        if "latest CVE" in query.lower():
-            return self.get_latest_cves()
-        elif "pentest" in query.lower():
-            return self.get_pentest_guidance(query)
-        else:
-            return self.get_ai_security_advice(query)
-
-    def get_ai_security_advice(self, vulnerability):
-        """Fetch AI-powered security recommendations."""
-        prompt = f"Provide cybersecurity recommendations for: {vulnerability}. Include best practices, mitigation steps, and security patches."
-
         try:
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {"role": "system", "content": "You are a cybersecurity expert providing security advice."},
-                    {"role": "user", "content": prompt}
-                ]
-            )
-            return response.choices[0].message.content
+            query_lower = query.lower()
+            if "latest cve" in query_lower:
+                return self.get_latest_cves()
+            elif "pentest" in query_lower or "penetration testing" in query_lower:
+                return self.ask_ai(query, role="ethical hacker")
+            elif "malware" in query_lower:
+                return self.ask_ai(query, role="malware analyst")
+            elif "forensics" in query_lower:
+                return self.ask_ai(query, role="digital forensics expert")
+            elif "tool" in query_lower:
+                return self.ask_ai(query, role="cybersecurity tool expert")
+            elif "career" in query_lower or "job" in query_lower:
+                return self.ask_ai(query, role="cybersecurity mentor")
+            else:
+                return self.ask_ai(query, role="cybersecurity expert")
         except Exception as e:
-            logging.error(f"Error retrieving AI advice: {str(e)}")
-            return f"⚠ **Error retrieving advice:** {str(e)}"
+            logging.error(f"Error processing response: {str(e)}")
+            return f"⚠ Error processing your question: {str(e)}"
 
-    def get_latest_cves(self):
-        """Fetch latest cybersecurity vulnerabilities (CVE) from NVD."""
+    def ask_ai(self, prompt_text, role="cybersecurity expert"):
         try:
-            url = "https://services.nvd.nist.gov/rest/json/cves/1.0"
+            system_prompt = f"<|system|>\nYou are a helpful {role} providing clear, accurate, and actionable cybersecurity advice.\n<|user|>\n{prompt_text}\n<|assistant|>"
+            response = client.text_generation(
+                prompt=system_prompt,
+                model="HuggingFaceH4/zephyr-7b-beta",
+                max_new_tokens=500,
+                temperature=0.7,
+                top_p=0.9
+            )
+            return response.strip()
+        except Exception as e:
+            logging.error(f"Error contacting AI model: {str(e)}")
+            return f"⚠ Failed to contact AI model: {str(e)}"
+            
+            
+    
+    
+    
+    def get_latest_cves(self, limit=5):
+        url = f"https://cve.circl.lu/api/vulnerability/last/{limit}"
+    
+        try:
+            
+            
             response = requests.get(url)
 
             if response.status_code != 200:
-                return f"⚠ **Error fetching CVE data:** HTTP {response.status_code}"
+                return [f"⚠ Error fetching CVE data: HTTP {response.status_code}"]
 
-            data = response.json()
-            latest_cves = [
-                f"🔹 **{item['cve']['CVE_data_meta']['ID']}**: {item['cve']['description']['description_data'][0]['value']}"
-                for item in data["result"]["CVE_Items"][:5]
-            ]
-            return "\n".join(latest_cves)
+            cves = response.json()
+            if not isinstance(cves, list):
+                return ["⚠ Unexpected response format from API."]
+            
+                
+            results = []
+     #       latest_cves = []
+        #        f"🔹 **{item['cve']['CVE_data_meta']['ID']}**: {item['cve']['description']['description_data'][0]['value']}"
+           #     for item in data["result"]["CVE_Items"][:5]
+       #     ]
+            
+            for item in cves:
+                try:
+                    cve_id = item.get("cveMetadata", {}).get("cveId", "Unknown ID")
+                    cna_data = item.get("containers", {}).get("cna", {})
+                    title = cna_data.get("title", "No title available")
+                    description = "No description available"
+                    if cna_data.get("descriptions"):
+                        description = cna_data["descriptions"][0].get("value", description)
+
+
+                    # Try to get CVSS base score
+                    metrics = cna_data.get("metrics", [])
+                    score = "N/A"
+                    for m in metrics:
+                        if "cvssV4_0" in m:
+                            score = m["cvssV4_0"].get("baseScore", "N/A")
+                            break
+                            
+
+                    link = f"https://cve.circl.lu/vuln/{cve_id}"
+                    formatted = f"🔹 **{cve_id}** ({score})\n{title}\n📝 {description}\n🔗 {link}"
+                    results.append(formatted)
+
+                except Exception as e:
+                    results.append(f"⚠ Error parsing CVE entry: {str(e)}")
+
+        #    return result or ["No valid vulnerabilities found."]
+             #   latest_cves.append(
+                 #   f"🔹 **{cve_id}** ({severity})\n{description}\n🔗 {cve_url}\n"
+             #   )
+
+
+
+
+            
+            return "\n".join(results) if results else "⚠ No CVEs were parsed successfully."
+
         except Exception as e:
-            logging.error(f"Error fetching CVE data: {str(e)}")
-            return f"⚠ **Error fetching CVE data:** {str(e)}"
+            logging.error(f"Error fetching CVEs: {str(e)}")
+            return f"⚠ Error fetching CVE data: {str(e)}"
 
-    def get_pentest_guidance(self, query):
-        """Provide AI-guided penetration testing insights."""
-        pentest_prompt = f"Explain penetration testing techniques for: {query}. Include step-by-step methods and security countermeasures."
+ 
 
-        try:
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {"role": "system", "content": "You are an ethical hacker providing penetration testing guidance."},
-                    {"role": "user", "content": pentest_prompt}
-                ]
-            )
-            return response.choices[0].message.content
-        except Exception as e:
-            logging.error(f"Error retrieving pentest advice: {str(e)}")
-            return f"⚠ **Error retrieving pentest advice:** {str(e)}"
 
     def export_chat(self):
         """Exports chat conversation to a text file."""
