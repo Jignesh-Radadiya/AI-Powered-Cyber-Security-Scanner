@@ -113,17 +113,15 @@ cd AI-Powered-Cyber-Security-Scanner
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux
-venv\Scripts\activate    # Windows
 ```
 
 📥 **Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
-🔑 **Set Up OpenAI API Key for Chatbot**
+🔑 **Set Up HUGGINGFACEHUB API Key for Chatbot**
 ```bash
-export OPENAI_API_KEY="Your_Open_AI_Key"  # Linux
-set OPENAI_API_KEY="Your_Open_AI_Key"    # Windows
+export HUGGINGFACEHUB_API_TOKEN="Your_Open_AI_Key"  # Linux
 ```
 ▶️ **Run the Scanner**
 ```bash
